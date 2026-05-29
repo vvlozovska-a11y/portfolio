@@ -1,0 +1,573 @@
+/* ===== Підключення шрифту з Google Fonts ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+/* ===== Загальні стилі (Reset & Base) ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #2d2d2d;
+    background-color: #ffffff;
+    padding-top: 70px; /* компенсація фіксованого хедера */
+}
+
+/* Селектор елемента */
+h1, h2, h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #1a1a1a;
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 0 0 0.5rem 0;
+}
+
+h2 {
+    font-size: 1.75rem;
+    margin: 0 0 1rem 0;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* Псевдоелемент ::after — декоративна лінія під h2 */
+h2::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 3px;
+    background-color: #4f7cff;
+    border-radius: 2px;
+    margin-top: 0.4rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem 0;
+}
+
+p {
+    margin: 0 0 1rem 0;
+    color: rgb(60, 60, 60);
+}
+
+/* Псевдоелемент ::before — лапки перед blockquote */
+blockquote {
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 4px solid #4f7cff;
+    background-color: #f7f9ff;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: hsl(225, 10%, 35%);
+    position: relative;
+}
+
+blockquote::before {
+    content: "\201C";
+    font-size: 3rem;
+    color: #4f7cff;
+    line-height: 0;
+    position: absolute;
+    top: 1.5rem;
+    left: -0.2rem;
+    opacity: 0.3;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===== Хедер та навігація ===== */
+
+/* Селектор ідентифікатора */
+#site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 0 2rem;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#site-header h1 {
+    font-size: 1.3rem;
+    margin: 0;
+    color: #1a1a1a;
+}
+
+#site-header p {
+    font-size: 0.8rem;
+    margin: 0;
+    color: #888;
+}
+
+/* Навігаційне меню */
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 0.25rem;
+}
+
+/* Комбінований селектор (нащадок) */
+nav ul li {
+    display: inline-block;
+}
+
+/* Комбінований селектор (дочірній) */
+.nav-menu > li > a {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #2d2d2d;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* Псевдоклас :hover */
+.nav-menu > li > a:hover {
+    background-color: #f0f4ff;
+    color: #4f7cff;
+}
+
+/* Псевдоклас :active */
+.nav-menu > li > a:active {
+    background-color: #e0e8ff;
+    color: #3060ee;
+}
+
+/* Псевдоклас :focus */
+.nav-menu > li > a:focus {
+    outline: 2px solid #4f7cff;
+    outline-offset: 2px;
+}
+
+/* Поточна сторінка в меню */
+.nav-menu li.current {
+    font-weight: 600;
+    color: #4f7cff;
+}
+
+/* ===== Основний контент ===== */
+main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+}
+
+section {
+    margin-bottom: 3rem;
+}
+
+/* Селектор класу */
+.section-intro {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 640px;
+}
+
+/* ===== Aside ===== */
+aside {
+    background-color: #f7f9ff;
+    border: 1px solid #dce8ff;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+}
+
+aside h2 {
+    font-size: 1.1rem;
+    color: #4f7cff;
+    margin-bottom: 0.5rem;
+}
+
+aside h2::after {
+    display: none;
+}
+
+/* ===== Зображення у figure ===== */
+figure {
+    margin: 1.5rem 0;
+    position: relative; /* для position: absolute на badge */
+    display: inline-block;
+}
+
+/* Селектор класу для контейнера аватара */
+.avatar-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.avatar-container img {
+    display: block;
+    border-radius: 12px;
+    border: 3px solid #e8e8e8;
+}
+
+/* position: absolute — бейдж поверх фото */
+.avatar-badge {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background-color: #4f7cff;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+figcaption {
+    font-size: 0.875rem;
+    color: #888;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* ===== Списки ===== */
+ul, ol {
+    padding-left: 1.5rem;
+    margin: 0.5rem 0 1rem 0;
+}
+
+li {
+    margin-bottom: 0.4rem;
+}
+
+/* Псевдоелемент ::before — іконка перед li у .skills-list */
+.skills-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.skills-list li::before {
+    content: "→";
+    color: #4f7cff;
+    font-weight: 700;
+    margin-right: 0.5rem;
+}
+
+/* ===== Посилання (LVHA порядок) ===== */
+a:link {
+    color: #4f7cff;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #7a5ccc;
+}
+
+a:hover {
+    color: #2248d0;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #1030b0;
+}
+
+a:focus {
+    outline: 2px solid #4f7cff;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* ===== Таблиця ===== */
+.skills-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 1.5rem 0;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.skills-table caption {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    color: #555;
+}
+
+/* Стилізація th */
+.skills-table th {
+    background-color: #4f7cff;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border: 1px solid #3a68f0;
+}
+
+/* Стилізація td */
+.skills-table td {
+    padding: 0.65rem 1rem;
+    border: 1px solid #e0e0e0;
+    color: #2d2d2d;
+}
+
+/* Зебра — псевдоклас :nth-child(even) */
+.skills-table tbody tr:nth-child(even) {
+    background-color: #f5f7ff;
+}
+
+.skills-table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Псевдоклас tr:hover */
+.skills-table tbody tr:hover {
+    background-color: #eaf0ff;
+}
+
+/* ===== Список визначень ===== */
+dl {
+    margin: 0.5rem 0 1rem 0;
+}
+
+dt {
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-top: 0.75rem;
+}
+
+dd {
+    margin-left: 1.5rem;
+    color: #555;
+}
+
+/* ===== Форма ===== */
+.contact-form {
+    max-width: 600px;
+}
+
+fieldset {
+    border: 1px solid #dce8ff;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+legend {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #4f7cff;
+    padding: 0 0.5rem;
+}
+
+/* Стилізація label */
+label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #2d2d2d;
+    margin-bottom: 0.3rem;
+    margin-top: 0.75rem;
+}
+
+/* Селектор атрибута */
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 0.95rem;
+    color: #2d2d2d;
+    background-color: #fafafa;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* :focus для полів вводу */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus {
+    outline: none;
+    border-color: #4f7cff;
+    box-shadow: 0 0 0 3px rgba(79, 124, 255, 0.15);
+    background-color: #fff;
+}
+
+textarea {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 0.95rem;
+    color: #2d2d2d;
+    background-color: #fafafa;
+    resize: vertical;
+    min-height: 120px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #4f7cff;
+    box-shadow: 0 0 0 3px rgba(79, 124, 255, 0.15);
+    background-color: #fff;
+}
+
+select {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 0.95rem;
+    color: #2d2d2d;
+    background-color: #fafafa;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: #4f7cff;
+    box-shadow: 0 0 0 3px rgba(79, 124, 255, 0.15);
+}
+
+/* Radio та checkbox */
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: #4f7cff;
+    margin-right: 0.4rem;
+    cursor: pointer;
+}
+
+/* Label поруч з radio — інлайн */
+label:has(input[type="radio"]),
+label:has(input[type="checkbox"]) {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 1.25rem;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+/* Кнопка відправки */
+button[type="submit"] {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.7rem 2rem;
+    background-color: #4f7cff;
+    color: #ffffff;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+button[type="submit"]:hover {
+    background-color: #3060ee;
+}
+
+button[type="submit"]:active {
+    background-color: #2248d0;
+    transform: translateY(1px);
+}
+
+button[type="submit"]:focus {
+    outline: 2px solid #4f7cff;
+    outline-offset: 3px;
+}
+
+/* ===== Медіа-елементи ===== */
+video, audio {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+}
+
+/* ===== Overflow — блок з обмеженою висотою ===== */
+.scroll-box {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #fafafa;
+}
+
+/* ===== Кнопка "Нагору" (position: fixed) ===== */
+#back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    background-color: #4f7cff;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(79, 124, 255, 0.35);
+    transition: background-color 0.2s, transform 0.2s;
+    text-decoration: none;
+}
+
+#back-to-top:hover {
+    background-color: #3060ee;
+    transform: translateY(-2px);
+}
+
+/* ===== Футер ===== */
+footer {
+    background-color: #f7f9ff;
+    border-top: 1px solid #e8e8e8;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #888;
+    margin-top: 3rem;
+}
+
+footer .nav-menu {
+    justify-content: center;
+    margin-top: 0.75rem;
+}
+
+footer .nav-menu > li > a {
+    font-size: 0.875rem;
+    color: #888;
+}
+
+footer .nav-menu > li > a:hover {
+    color: #4f7cff;
+    background-color: transparent;
+}
